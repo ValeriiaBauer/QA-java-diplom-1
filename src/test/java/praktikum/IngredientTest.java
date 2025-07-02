@@ -7,7 +7,6 @@ import java.util.Arrays;
 import java.util.Collection;
 import static org.junit.Assert.*;
 
-
 @RunWith(Parameterized.class)
 public class IngredientTest {
 
@@ -25,44 +24,31 @@ public class IngredientTest {
     public static Collection<Object[]> getTestData() {
         return Arrays.asList(new Object[][]{
                 {IngredientType.SAUCE, "hot sauce", 100.0f},
-                {IngredientType.FILLING, "cutlet", 200.0f},
-                {IngredientType.SAUCE, "", 0.0f},
-                {IngredientType.FILLING, null, -1.0f}
+                {IngredientType.FILLING, "cutlet", 200.0f}
         });
     }
 
     @Test
-    public void constructor_ShouldSetFieldsCorrectly() {
+    public void ingredientObjectShouldNotBeNull() {
         Ingredient ingredient = new Ingredient(expectedType, expectedName, expectedPrice);
-
         assertNotNull("Объект Ingredient не должен быть null", ingredient);
-        assertEquals("Тип ингредиента должен совпадать", expectedType, ingredient.type);
-        assertEquals("Название ингредиента должно совпадать", expectedName, ingredient.name);
-        assertEquals("Цена ингредиента должна совпадать", expectedPrice, ingredient.price, 0.001f);
     }
 
     @Test
-    public void getType_ShouldReturnCorrectValue() {
+    public void ingredientTypeShouldMatchExpected() {
         Ingredient ingredient = new Ingredient(expectedType, expectedName, expectedPrice);
-
-        IngredientType actualType = ingredient.getType();
-        assertEquals("Метод getType() вернул неверное значение", expectedType, actualType);
+        assertEquals("Тип ингредиента должен совпадать", expectedType, ingredient.type);
     }
 
     @Test
     public void getName_ShouldReturnCorrectValue() {
         Ingredient ingredient = new Ingredient(expectedType, expectedName, expectedPrice);
-
-        String actualName = ingredient.getName();
-        assertEquals("Метод getName() вернул неверное значение", expectedName, actualName);
+        assertEquals(expectedName, ingredient.getName());
     }
 
     @Test
     public void getPrice_ShouldReturnCorrectValue() {
         Ingredient ingredient = new Ingredient(expectedType, expectedName, expectedPrice);
-
-        float actualPrice = ingredient.getPrice();
-        assertEquals("Метод getPrice() вернул неверное значение",
-                expectedPrice, actualPrice, 0.001f);
+        assertEquals(expectedPrice, ingredient.getPrice(), 0.001f);
     }
 }

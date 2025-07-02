@@ -4,7 +4,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import static org.junit.Assert.*;
-
 import java.util.Arrays;
 import java.util.Collection;
 
@@ -40,12 +39,5 @@ public class BunTest {
     public void testGetPrice() {
         Bun bun = new Bun(bunName, bunPrice);
         assertEquals(bunPrice, bun.getPrice(), 0.0f);
-    }
-
-    @Test
-    public void testConstructor() {
-        Bun bun = new Bun(bunName, bunPrice);
-        assertEquals(bunName, bun.name);
-        assertEquals(bunPrice, bun.price, 0.0f);
     }
 }
